@@ -4,6 +4,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleTables;
+using XamarinExam.Controllers;
 using XamarinExam.Models.EasyModels;
 
 namespace XamarinExam.Models
@@ -12,11 +14,9 @@ namespace XamarinExam.Models
     {
         [PrompDisplay("Name")]
         public string Name { get; set; }
-        [PrompDisplay("Class Id")]
+        [IgnoreInput]
         public int ClassId { get; set; }
-        [PrompDisplay("Address")]
         public string Address { get; set; }
-        [PrompDisplay("Birthday")]
         public DateTime Birthday { get; set; }
 
         public Student()
@@ -30,6 +30,14 @@ namespace XamarinExam.Models
             ClassId = classId;
             Address = address;
             Birthday = birthday;
+        }
+
+        public new void Input()
+        {
+            base.Input();
+            Console.WriteLine("Chon lop");
+            ConsoleTable.From(DataManager.GetInstance.Classes).Write();
+            ClassId = Convert.ToInt32(Console.ReadLine());
         }
     }
 }

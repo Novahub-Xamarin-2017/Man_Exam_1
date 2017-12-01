@@ -10,10 +10,17 @@ namespace XamarinExam.Controllers
     public class Menu
     {
         public DataManager DataManager { get; set; }
+        public InputDataMenu InputMenu { get; set; }
+
+        public Menu()
+        {
+            
+        }
 
         public Menu(DataManager dataManager)
         {
             DataManager = dataManager;
+            InputMenu = new InputDataMenu(DataManager);
         }
 
         public void DrawMenu()
@@ -37,7 +44,7 @@ namespace XamarinExam.Controllers
             switch (choice)
             {
                 case 1:
-                    Console.WriteLine("Nhap du lieu");
+                    InputMenu.ShowInputMenu();
                     break;
                 case 2:
                     Console.WriteLine("Hien thi du lieu");

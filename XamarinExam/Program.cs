@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ConsoleTables;
 using Newtonsoft.Json;
 using XamarinExam.Controllers;
+using XamarinExam.Extension;
 using XamarinExam.Models;
 
 namespace XamarinExam
@@ -15,13 +16,14 @@ namespace XamarinExam
     {
         static void Main(string[] args)
         {
-            Console.InputEncoding = Encoding.UTF8;
-            Console.OutputEncoding = Encoding.Unicode;
-            DataManager dataManager = DataManager.GetInstance;
+            var dataManager = DataManager.GetInstance;
+            dataManager.LoadData();
             Menu menu = new Menu(dataManager);
             menu.DrawMenu();
             Console.ReadKey();
         }
+        
+
         
 
     }

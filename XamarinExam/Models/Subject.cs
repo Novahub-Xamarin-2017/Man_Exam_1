@@ -8,10 +8,13 @@ namespace XamarinExam.Models
 {
     public class Subject : EasyModels.EasyModels
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public int Coefficient { get; set; }
 
+        public Subject()
+        {
+            
+        }
         public Subject(int id, string name, int coefficient)
         {
             Id = id;
