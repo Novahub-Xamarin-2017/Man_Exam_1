@@ -57,6 +57,9 @@ namespace XamarinExam.Controllers.SubMenus
                 case 5:
                     TopClassesHaveHighAverageScore();
                     break;
+                case 6:
+                    TopTeachers();
+                    break;
                 default:
                     ShowReportMenu();
                     break;
@@ -77,6 +80,49 @@ namespace XamarinExam.Controllers.SubMenus
             }
         }
 
+        public void TopTeachers()
+        {
+            Console.WriteLine("1. Top 3 giao vien co so luong khoa hoc nhieu nhat: ");
+            var teachersHaveMostCourses = DataManager.Teachers.Select(x => new
+            {
+                x.Id,
+                x.Name,
+                NumberOfCourses = (DataManager.Courses.Where(c => c.TeacherId == x.Id)).Count()
+            })
+            .OrderByDescending(x => x.NumberOfCourses)
+            .Take(3);
+            ConsoleTable.From(teachersHaveMostCourses).Write();
+
+            Console.WriteLine("2. Top 3 giao vien co so luong sinh vien hoc nhieu nhat");
+            var teachersHaveMostStudents = DataManager.Teachers.Select(t => new
+            {
+                t.Id,
+                t.Name,
+                NumberOfStudents = DataManager.Courses
+                    .Where(x => x.TeacherId == t.Id)
+                    .Select(x => new
+                    {
+                        x.Id,
+                        x.Name,
+                        NumbersOfStudent = (DataManager.Scores.Where(s => s.CourseId == x.Id)).Count()
+                    })
+                    .Sum(x => x.NumbersOfStudent)
+            }).OrderByDescending(x => x.NumberOfStudents).Take(3);
+
+            Console.WriteLine("3. Top 3 giao vien co diem trung binh theo mon day nhieu nhat: ");
+            ConsoleTable.From(teachersHaveMostStudents).Write();
+            var courseId = 0;
+            var teacherHaveHighestAverageScore = DataManager.Teachers.Select(x => new
+            {
+                x.Id,
+                x.Name,
+                AverageScore = DataManager.Courses.Where(c => c.SubjectId == x.SubjectId).Select(c =>
+                                       new {c.Id, AverageScore = DataManager.CalculateAverageScorePerCourse(c.Id)})
+                                   .Sum(s => s.AverageScore) /
+                               (DataManager.Courses.Where(c => c.SubjectId == x.SubjectId)).Count()
+            }).OrderByDescending(x => x.AverageScore).Take(3);
+            ConsoleTable.From(teacherHaveHighestAverageScore).Write();
+        }
         public void TopClasses()
         {
             var classes = DataManager.Classes

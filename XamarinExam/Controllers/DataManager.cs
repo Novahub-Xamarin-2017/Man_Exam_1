@@ -96,5 +96,15 @@ namespace XamarinExam.Controllers
                 .Select(x => new {x.Id, Score = CalculateAverageScore(x.Id)});
             return students.Select(x => x.Score).Sum() / students.Count();
         }
+
+        public double CalculateAverageScorePerCourse(int courseId)
+        {
+            var scores = Scores.Where(x => x.CourseId == courseId)
+                .Select(x => new { x.Id, x.CourseId, x.StudentScore })
+                .Join(Courses, x => x.CourseId, c => c.Id,
+                    (x, c) => new { x.Id, x.StudentScore, c.SubjectId })
+                .Join(Subjects, x => x.SubjectId, s => s.Id, (x, s) => new { x.StudentScore, s.Coefficient });
+            return scores.Sum(x => x.StudentScore * x.Coefficient) / scores.Count();
+        }
     }
 }
