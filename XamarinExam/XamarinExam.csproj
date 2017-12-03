@@ -104,8 +104,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\DataManager.cs" />
-    <Compile Include="Controllers\InputDataMenu.cs" />
     <Compile Include="Controllers\Menu.cs" />
+    <Compile Include="Controllers\SubMenus\DisplayMenu.cs" />
+    <Compile Include="Controllers\SubMenus\InputMenu.cs" />
+    <Compile Include="Controllers\SubMenus\ReportMenu.cs" />
+    <Compile Include="Controllers\SubMenus\SearchMenu.cs" />
     <Compile Include="Extension\Extension.cs" />
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\Course.cs" />
@@ -121,10 +124,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Data\Classs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Courses.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Scores.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Students.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Subjects.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Teachers.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

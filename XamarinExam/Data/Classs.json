@@ -1,0 +1,27 @@
+[
+  {
+    "Name": "15T1",
+    "TeacherId": 5,
+    "Id": 1
+  },
+  {
+    "Name": "15T2",
+    "TeacherId": 1,
+    "Id": 2
+  },
+  {
+    "Name": "15T3",
+    "TeacherId": 3,
+    "Id": 3
+  },
+  {
+    "Name": "15TCLC1",
+    "TeacherId": 4,
+    "Id": 4
+  },
+  {
+    "Name": "14T2",
+    "TeacherId": 2,
+    "Id": 5
+  }
+]

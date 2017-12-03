@@ -1,0 +1,98 @@
+[
+  {
+    "CourseId": 1,
+    "StudenId": 1,
+    "StudentScore": 6.0,
+    "Id": 1
+  },
+  {
+    "CourseId": 1,
+    "StudenId": 2,
+    "StudentScore": 5.5,
+    "Id": 2
+  },
+  {
+    "CourseId": 3,
+    "StudenId": 3,
+    "StudentScore": 7.5,
+    "Id": 3
+  },
+  {
+    "CourseId": 3,
+    "StudenId": 4,
+    "StudentScore": 10.0,
+    "Id": 3
+  },
+  {
+    "CourseId": 2,
+    "StudenId": 5,
+    "StudentScore": 8.0,
+    "Id": 3
+  },
+  {
+    "CourseId": 2,
+    "StudenId": 6,
+    "StudentScore": 9.0,
+    "Id": 3
+  },
+  {
+    "CourseId": 1,
+    "StudenId": 6,
+    "StudentScore": 10.0,
+    "Id": 3
+  },
+  {
+    "CourseId": 1,
+    "StudenId": 3,
+    "StudentScore": 8.0,
+    "Id": 3
+  },
+  {
+    "CourseId": 3,
+    "StudenId": 10,
+    "StudentScore": 10.0,
+    "Id": 3
+  },
+  {
+    "CourseId": 2,
+    "StudenId": 7,
+    "StudentScore": 10.0,
+    "Id": 3
+  },
+  {
+    "CourseId": 1,
+    "StudenId": 8,
+    "StudentScore": 10.0,
+    "Id": 3
+  },
+  {
+    "CourseId": 1,
+    "StudenId": 9,
+    "StudentScore": 5.0,
+    "Id": 3
+  },
+  {
+    "CourseId": 2,
+    "StudenId": 11,
+    "StudentScore": 10.0,
+    "Id": 3
+  },
+  {
+    "CourseId": 1,
+    "StudenId": 12,
+    "StudentScore": 8.0,
+    "Id": 3
+  },
+  {
+    "CourseId": 1,
+    "StudenId": 13,
+    "StudentScore": 9.0,
+    "Id": 3
+  },
+  {
+    "CourseId": 3,
+    "StudenId": 14,
+    "StudentScore": 8.0,
+    "Id": 3
+  }
+]

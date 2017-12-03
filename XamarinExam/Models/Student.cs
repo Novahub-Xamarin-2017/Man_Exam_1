@@ -12,11 +12,13 @@ namespace XamarinExam.Models
 {
     public class Student : EasyModels.EasyModels
     {
-        [PrompDisplay("Name")]
+        [PrompDisplay("Ten hoc sinh: ")]
         public string Name { get; set; }
         [IgnoreInput]
         public int ClassId { get; set; }
+        [PrompDisplay("Dia chi: ")]
         public string Address { get; set; }
+        [PrompDisplay("Ngay sinh: ")]
         public DateTime Birthday { get; set; }
 
         public Student()
@@ -35,8 +37,9 @@ namespace XamarinExam.Models
         public new void Input()
         {
             base.Input();
-            Console.WriteLine("Chon lop");
+            Console.WriteLine("Chon lop: ");
             ConsoleTable.From(DataManager.GetInstance.Classes).Write();
+            Console.Write("Nhap ID lop: ");
             ClassId = Convert.ToInt32(Console.ReadLine());
         }
     }

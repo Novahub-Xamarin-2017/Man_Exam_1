@@ -5,20 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using XamarinExam.Extension;
 
-namespace XamarinExam.Controllers
+namespace XamarinExam.Controllers.SubMenus
 {
-    public class InputDataMenu
+    public class InputMenu
     {
         public DataManager DataManager { get; set; }
 
-        public InputDataMenu()
+        public InputMenu()
         {
-            
+
         }
 
-        public InputDataMenu(DataManager dataManager)
+        public InputMenu(DataManager dataManager)
         {
             DataManager = dataManager;
+            DataManager.LoadData();
         }
 
         public void ShowInputMenu()
@@ -72,6 +73,20 @@ namespace XamarinExam.Controllers
                     break;
             }
             DataManager.WriteData();
+            Console.WriteLine("1. Quay lai menu nhap du lieu.");
+            Console.WriteLine("2. Quay lai menu chinh.");
+            Console.WriteLine("3. Thoat.");
+            int secondChoice = Convert.ToInt32(Console.ReadLine());
+            switch (secondChoice)
+            {
+                case 1:
+                    ShowInputMenu();
+                    break;
+                case 2:
+                    var menu = new Menu(DataManager);
+                    menu.DrawMenu();
+                    break;
+            }
         }
     }
 }

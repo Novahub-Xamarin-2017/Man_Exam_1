@@ -4,13 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using XamarinExam.Controllers.SubMenus;
 
 namespace XamarinExam.Controllers
 {
     public class Menu
     {
         public DataManager DataManager { get; set; }
-        public InputDataMenu InputMenu { get; set; }
+        public  InputMenu InputMenu { get; set; }
+        public DisplayMenu DisplayMenu { get; set; }
+        public SearchMenu SearchMenu { get; set; }
+        public ReportMenu ReportMenu { get; set; }
 
         public Menu()
         {
@@ -20,7 +24,11 @@ namespace XamarinExam.Controllers
         public Menu(DataManager dataManager)
         {
             DataManager = dataManager;
-            InputMenu = new InputDataMenu(DataManager);
+            DataManager.LoadData();
+            InputMenu = new InputMenu(DataManager);
+            DisplayMenu = new DisplayMenu(DataManager);
+            SearchMenu = new SearchMenu(DataManager);
+            ReportMenu = new ReportMenu(DataManager);
         }
 
         public void DrawMenu()
@@ -45,15 +53,16 @@ namespace XamarinExam.Controllers
             {
                 case 1:
                     InputMenu.ShowInputMenu();
+                    DrawMenu();
                     break;
                 case 2:
-                    Console.WriteLine("Hien thi du lieu");
+                    DisplayMenu.ShowDisplayMenu();
                     break;
                 case 3:
-                    Console.WriteLine("Tim kiem du lieu");
+                    SearchMenu.ShowSearchMenu();
                     break;
                 case 4:
-                    Console.WriteLine("Bao cao");
+                    ReportMenu.ShowReportMenu();
                     break;
                 default:
                     Console.WriteLine("Nhap sai, vui long nhap lai: ");

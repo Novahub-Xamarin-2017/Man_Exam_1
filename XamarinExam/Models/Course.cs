@@ -11,6 +11,7 @@ namespace XamarinExam.Models
 {
     public class Course : EasyModels.EasyModels
     {
+        [PrompDisplay("Ten khoa hoc")]
         public string Name { get; set; }
         [IgnoreInput]
         public int SubjectId { get; set; }
@@ -34,14 +35,17 @@ namespace XamarinExam.Models
         public new void Input()
         {
             base.Input();
-            Console.WriteLine("Chon mon hoc");
+            Console.WriteLine("Chon mon hoc: ");
             ConsoleTable.From(DataManager.GetInstance.Subjects).Write();
+            Console.Write("Nhap ID mon hoc : ");
             SubjectId = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Chon lop");
+            Console.WriteLine("Chon lop: ");
             ConsoleTable.From(DataManager.GetInstance.Classes).Write();
+            Console.Write("Nhap ID lop : ");
             ClassId = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Chon giao vien");
             ConsoleTable.From(DataManager.GetInstance.Teachers).Write();
+            Console.Write("Nhap ID giao vien : ");
             TeacherId = Convert.ToInt32(Console.ReadLine());
         }
     }

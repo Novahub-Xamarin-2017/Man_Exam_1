@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleTables;
 using Newtonsoft.Json;
 using XamarinExam.Models;
 
@@ -70,6 +71,30 @@ namespace XamarinExam.Controllers
             SaveJson(Scores, "Data");
             SaveJson(Teachers, "Data");
             SaveJson(Subjects, "Data");
+        }
+
+        public double CalculateAverageScore(int studentId)
+        {
+            var scores = Scores.Where(x => x.StudenId == studentId)
+                .Select(x => new { x.StudentScore, x.CourseId })
+                .Join(Courses, x => x.CourseId, c => c.Id, (x, c) => new { x.StudentScore, c.SubjectId })
+                .Join(Subjects, x => x.SubjectId, s => s.Id, (x, s) => new { x.StudentScore, s.Coefficient });
+            return scores.Sum(a => a.StudentScore * a.Coefficient) / scores.Sum(a => a.Coefficient);
+        }
+
+        public int CountExcellentStudentsInClass(int classId)
+        {
+            return (Students.Where(x => x.ClassId == classId)
+                .Select(x => new {x.Id, x.Name, Score = CalculateAverageScore(x.Id)})
+                .Where(x => x.Score >= 8))
+                .Count();
+        }
+
+        public double CalculateAverageScoreOfClass(int classId)
+        {
+            var students = Students.Where(x => x.ClassId == classId)
+                .Select(x => new {x.Id, Score = CalculateAverageScore(x.Id)});
+            return students.Select(x => x.Score).Sum() / students.Count();
         }
     }
 }

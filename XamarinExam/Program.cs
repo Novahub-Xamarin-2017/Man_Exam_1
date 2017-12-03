@@ -18,13 +18,9 @@ namespace XamarinExam
         {
             var dataManager = DataManager.GetInstance;
             dataManager.LoadData();
-            Menu menu = new Menu(dataManager);
+            var menu = new Menu(dataManager);
             menu.DrawMenu();
             Console.ReadKey();
         }
-        
-
-        
-
     }
 }

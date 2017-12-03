@@ -12,7 +12,7 @@ namespace XamarinExam.Extension
     {
         public static void Input<T>(this List<T> list) where T : EasyModels, new()
         {
-            Console.WriteLine("Nhap so luong :");
+            Console.Write("Nhap so luong : ");
             var count = Convert.ToInt32(Console.ReadLine());
             for (var i = 0; i < count; i++)
             {

@@ -16,7 +16,6 @@ namespace XamarinExam.Models
         [IgnoreInput]
         public int StudenId { get; set; }
         [IgnoreInput]
-        public int ClassId { get; set; }
         public double StudentScore { get; set; }
 
         public Score()
@@ -34,15 +33,26 @@ namespace XamarinExam.Models
 
         public new void Input()
         {
-            base.Input();
-            Console.WriteLine("Chon lop");
+            StudentScore = -1;
+            do
+            {
+                Console.Write("Nhap diem: ");
+                StudentScore = Convert.ToDouble(Console.ReadLine());
+            } while (StudentScore > 10 || StudentScore < 0);
+
+            Console.WriteLine("Chon lop : ");
             ConsoleTable.From(DataManager.GetInstance.Classes).Write();
-            ClassId = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Chon khoa hoc");
-            ConsoleTable.From(DataManager.GetInstance.Courses).Write();
+            Console.Write("Nhap ID lop : ");
+            var classId = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Chon khoa hoc : ");
+            ConsoleTable.From(DataManager.GetInstance.Courses.Where(x => x.ClassId == classId)).Write();
+            Console.Write("Nhap ID khoa hoc : ");
             CourseId = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Chon hoc sinh");
-            ConsoleTable.From(DataManager.GetInstance.Students).Write();
+
+            Console.WriteLine("Chon hoc sinh : ");
+            ConsoleTable.From(DataManager.GetInstance.Students.Where(x => x.ClassId == classId)).Write();
+            Console.Write("Nhap ID hoc sinh : ");
             StudenId = Convert.ToInt32(Console.ReadLine());
         }
     }
