@@ -1,0 +1,23 @@
+[
+  {
+    "Name": "Lap trinh C co ban",
+    "SubjectId": 1,
+    "TeacherId": 2,
+    "ClassId": 3,
+    "Id": 1
+  },
+  {
+    "Name": "Lap trinh C nang cao",
+    "SubjectId": 3,
+    "TeacherId": 1,
+    "ClassId": 2,
+    "Id": 2
+  },
+  {
+    "Name": "Lap trinh ASP.NET",
+    "SubjectId": 3,
+    "TeacherId": 1,
+    "ClassId": 5,
+    "Id": 3
+  }
+]
